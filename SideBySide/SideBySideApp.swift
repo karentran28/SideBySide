@@ -13,7 +13,7 @@ struct SideBySideApp: App {
     
     init() {
         FirebaseApp.configure()
-        print("Firebase configured")
+        print("Firebase configure")
     }
     
     var body: some Scene {

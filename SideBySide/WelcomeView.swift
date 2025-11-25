@@ -7,32 +7,45 @@
 
 import SwiftUI
 
-struct LoginPageView: View {
+struct WelcomeView: View {
+    @State private var path = NavigationPath()
     var body: some View {
-        VStack {
-            Text(Constants.WelcomeString)
-                .font(.largeTitle)
-                .bold()
-            
-            Button {
+        NavigationStack(path: $path) {
+            VStack {
+                Text(Constants.WelcomeString)
+                    .font(.largeTitle)
+                    .bold()
                 
-            } label: {
-                Text(Constants.LogInString)
-                    .LogInButtonStyle()
-
-            }
-                        
-            Button {
+                Button {
+                    path.append("login")
+                } label: {
+                    Text(Constants.LogInString)
+                        .LogInButtonStyle()
+                    
+                }
                 
-            } label: {
-                Text(Constants.SignUpString)
-                    .LogInButtonStyle()
+                Button {
+                    path.append("signup")
+                } label: {
+                    Text(Constants.SignUpString)
+                        .LogInButtonStyle()
+                }
+                
             }
-            
+            .navigationDestination(for: String.self) { value in
+                switch value {
+                    case "login":
+                    LogInView(path: $path)
+                case "signup":
+                    SignUpView(path: $path)
+                default:
+                    EmptyView()
+                }
+            }
         }
     }
 }
 
 #Preview {
-    LoginPageView()
+    WelcomeView()
 }
