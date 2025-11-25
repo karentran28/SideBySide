@@ -1,0 +1,18 @@
+//
+//  LogInView.swift
+//  SideBySide
+//
+//  Created by Karen Tran on 2025-11-25.
+//
+
+import SwiftUI
+
+struct LogInView: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+#Preview {
+    LogInView()
+}
