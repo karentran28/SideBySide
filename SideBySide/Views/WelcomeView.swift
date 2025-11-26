@@ -12,31 +12,31 @@ struct WelcomeView: View {
     var body: some View {
         NavigationStack(path: $path) {
             VStack {
-                Text(Constants.WelcomeString)
+                Text(Constants.welcomeString)
                     .font(.largeTitle)
                     .bold()
                 
                 Button {
-                    path.append("login")
+                    path.append(Constants.pathLogInView)
                 } label: {
-                    Text(Constants.LogInString)
-                        .LogInButtonStyle()
+                    Text(Constants.logInString)
+                        .logInButtonStyle()
                     
                 }
                 
                 Button {
-                    path.append("signup")
+                    path.append(Constants.pathSignInView)
                 } label: {
-                    Text(Constants.SignUpString)
-                        .LogInButtonStyle()
+                    Text(Constants.signUpString)
+                        .logInButtonStyle()
                 }
                 
             }
             .navigationDestination(for: String.self) { value in
                 switch value {
-                    case "login":
+                    case Constants.pathLogInView:
                     LogInView(path: $path)
-                case "signup":
+                case Constants.pathSignInView:
                     SignUpView(path: $path)
                 default:
                     EmptyView()

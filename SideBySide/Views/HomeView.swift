@@ -1,18 +1,19 @@
 //
-//  AppViewModel.swift
+//  HomeView.swift
 //  SideBySide
 //
-//  Created by Karen Tran on 2025-11-24.
+//  Created by Karen Tran on 2025-11-25.
 //
 
 import SwiftUI
 
-struct AppViewModel: View {
+struct HomeView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
     }
 }
 
 #Preview {
-    AppViewModel()
+    HomeView()
 }

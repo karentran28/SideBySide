@@ -9,15 +9,23 @@ import Foundation
 import SwiftUI
 
 struct Constants {
-    static let WelcomeString = "Welcome to SideBySide"
-    static let LogInString = "Log in"
-    static let SignUpString = "Sign up"
+    static let welcomeString = "Welcome to SideBySide"
+    static let logInString = "Log in"
+    static let signUpString = "Sign up"
+    static let signUpNowString = "Sign Up Now!"
+    static let logInExistingEmailString = "Log in with an existing email"
+    static let emailTextFieldString = "Enter your email"
+    static let passwordTextFieldString = "Enter your password"
+    static let signUpHereString = "Don't have an account? Sign up here."
+    static let logInHereString = "Already have an account? Log in here."
     
+    static let pathSignInView = "signup"
+    static let pathLogInView = "login"
     
 }
 
 extension Text {
-    func LogInButtonStyle() -> some View {
+    func logInButtonStyle() -> some View {
         self
             .font(.title3)
             .frame(width: 200, height: 40)
@@ -29,3 +37,25 @@ extension Text {
             }
     }
 }
+
+extension TextField {
+    func emailTextFieldStyle() -> some View {
+        self
+            .padding()
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .disableAutocorrection(true)
+            .autocapitalization(.none)
+    }
+}
+
+extension SecureField {
+    func passwordTextFieldStyle() -> some View {
+        self
+            .padding()
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .disableAutocorrection(true)
+            .autocapitalization(.none)
+    }
+}
+
+

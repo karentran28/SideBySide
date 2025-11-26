@@ -11,14 +11,18 @@ import Firebase
 @main
 struct SideBySideApp: App {
     
+    private var appVM: AppViewModel
+    
     init() {
         FirebaseApp.configure()
         print("Firebase configure")
+        appVM = AppViewModel()
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environment(appVM)
         }
     }
 }
