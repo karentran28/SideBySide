@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct AppUser: Identifiable, Codable {
-    let id: String
+    @DocumentID var id: String?
     let username: String
     let groupId: String?
     let streak: Int

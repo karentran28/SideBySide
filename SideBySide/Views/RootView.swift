@@ -11,7 +11,7 @@ struct RootView: View {
     @Environment(AppViewModel.self) var appVM
     
     var body: some View {
-        Group {
+        SwiftUI.Group {
             // Not logged in
             if appVM.authUser == nil {
                 WelcomeView()

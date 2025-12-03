@@ -12,6 +12,7 @@ struct SetupView: View {
     @State var viewModel = SetupViewModel()
     @State private var selectedPhotoItem: PhotosPickerItem? = nil
     @FocusState private var groupFieldFocused: Bool
+    @Environment(AppViewModel.self) var appVM
     
     var body: some View {
         ScrollView {
@@ -135,6 +136,13 @@ struct SetupView: View {
                 }
             }
             .padding()
+        }
+        .onChange(of: viewModel.onboardingFinished) { _, finished in
+            if finished {
+                Task {
+                    await appVM.reloadCurrentUser()
+                }
+            }
         }
     }
 }

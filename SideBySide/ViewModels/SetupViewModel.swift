@@ -23,6 +23,7 @@ class SetupViewModel {
     // State
     var isLoading: Bool = false
     var errorMessage: String = ""
+    var onboardingFinished = false
     
     enum GroupChoice {
         case join
@@ -45,7 +46,13 @@ class SetupViewModel {
             
             let groupId = try await handleGroupChoice(uid: uid)
             
-            try await saveUserDocument(uid: uid, username: username, groupId: groupId, photoURL: photoURL)
+            // nil if user skipped
+            let finalGroupId = groupChoice == .skip ? nil : groupId
+            
+            try await saveUserDocument(uid: uid, username: username, groupId: finalGroupId, photoURL: photoURL)
+            
+            self.onboardingFinished = true
+
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -86,7 +93,6 @@ class SetupViewModel {
     func saveUserDocument(uid: String, username: String, groupId: String?, photoURL: String?) async throws {
         
         var data: [String: Any] = [
-            "id": uid,
             "username": username,
             "groupId": groupId as Any,
             "streak": 0,

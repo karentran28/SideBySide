@@ -52,6 +52,11 @@ class AppViewModel {
         }
     }
     
+    func reloadCurrentUser() async {
+        guard let uid = authUser?.uid else { return }
+        await loadUserDocument(uid: uid)
+    }
+    
     @MainActor
     deinit {
         // Clean up listener to avoid memory leaks
