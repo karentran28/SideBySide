@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 @Observable
 class AuthViewModel {
@@ -15,7 +16,6 @@ class AuthViewModel {
     var password = ""
     var errorMessage = ""
     var isLoading = false
-    var user: User? = nil
     
     func signUp() async {
         isLoading = true
@@ -42,5 +42,4 @@ class AuthViewModel {
         }
         isLoading = false
     }
-    
 }

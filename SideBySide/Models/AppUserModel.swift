@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct User: Identifiable {
+struct AppUser: Identifiable, Codable {
     let id: String
-    let name: String
+    let username: String
     let groupId: String?
     let streak: Int
+    let onboardingCompleted: Bool
+    let photoURL: String?
 }

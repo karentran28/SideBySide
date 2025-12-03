@@ -12,8 +12,14 @@ struct RootView: View {
     
     var body: some View {
         Group {
+            // Not logged in
             if appVM.authUser == nil {
                 WelcomeView()
+            //Logged in but no Firestore profile yet
+            } else if appVM.appUser == nil {
+                SetupView()
+            } else if appVM.appUser?.onboardingCompleted == false {
+                SetupView()
             } else {
                 HomeView()
             }
